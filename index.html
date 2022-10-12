@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MWHNKQB');</script>
+    <!-- End Google Tag Manager -->
+
+<title>Page Title</title>
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWHNKQB"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div style="width: 100%; height: 90vh; display: flex; justify-content: center; align-items: center;">
+        <div style="width: 400px;">
+            <div style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: space-between;">
+                <button onclick="playAudio()" type="button">Play sound</button>
+                <button onclick="pauseAudio()" type="button">Stop sound</button> 
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <audio id="single-audio" controls>
+                    <source src="https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <div style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: center;">
+                <button id="mute-button" onclick="muteUnmuteAudio()" type="button">Mute sound</button>
+            </div>
+
+            <div style="margin-top: 200px; display: flex; justify-content: center;">
+                <audio id="single-audio1" controls>
+                    <source src="https://dl.espressif.com/dl/audio/ff-16b-2c-44100hz.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+            <div style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: center;">
+                <button id="mute-button-all" onclick="muteUnmuteAll()" type="button">Mute all sound</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    var audio = document.getElementById('single-audio');
+    var muteButton = document.getElementById('mute-button');
+    var muteButtonAll = document.getElementById('mute-button-all');
+
+    function playAudio() {
+        audio.play();
+        
+    }
+
+    function pauseAudio() { 
+        audio.pause();
+    }
+
+    function muteUnmuteAudio() {
+        audio.muted = !audio.muted;
+        if (muteButton.innerHTML === "Mute sound") {
+            muteButton.innerHTML = "Enable sound";
+        } else {
+            muteButton.innerHTML = "Mute sound";
+        }
+    }
+
+    function muteUnmuteAll() {
+        const elems = document.querySelectorAll("video, audio");
+        if (muteButtonAll.innerHTML === "Mute all sound") {
+            muteButtonAll.innerHTML = "Enable all sound";
+            for (const el of elems) {
+               el.muted = true
+            }
+        } else {
+            muteButtonAll.innerHTML = "Mute all sound";
+            for (const el of elems) {
+               el.muted = false
+            }
+        }
+    }
+
+</script> 
+
+</html>
